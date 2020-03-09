@@ -21,16 +21,22 @@ public class TwitterHandler {
         TwitterOperations twitterOperations = new TwitterOperations();
         //Latest Post (Newer to Older) with limit
         System.out.println(twitterOperations.getLatestPosts("#Pi", 10).get());
+        System.out.println("...................................................................");
         //Older to Newer with limit and offset values
         System.out.println(twitterOperations.getOlderPosts("#Pi", 10, 3).get());
+        System.out.println("...................................................................");
         //Number of Retweets (Higher to Lower)
         System.out.println(twitterOperations.getNumberOfRetweets("#Pi").get());
+        System.out.println("...................................................................");
         //Number of Likes (Higher to Lower)
         System.out.println(twitterOperations.getNumberOfLikes().get());
+        System.out.println("...................................................................");
         //Get the List and number of tweets for an entered date.
         System.out.println(twitterOperations.getListAndNumberOfLikes(date, "#Pi").get());
+        System.out.println("...................................................................");
         // Get the number of likes on a particular keyword in a time interval of 15 mins.
         System.out.println(twitterOperations.getNumberOfLikesTimeInterval().get());
+        System.out.println("...................................................................");
 
     }
 }
