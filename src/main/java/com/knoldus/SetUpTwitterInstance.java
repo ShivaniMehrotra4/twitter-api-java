@@ -2,8 +2,11 @@ package com.knoldus;
 
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
+
 
 public class SetUpTwitterInstance {
 
@@ -18,13 +21,15 @@ public class SetUpTwitterInstance {
                 "7HgIJUmjOX2AZThvVp7RPWsZwOrW1ffpvkEpjeBSQynnH"));
     }
 
-    CompletableFuture<Stream<Status>> getTweets(String searchItem) throws TwitterException {
+    CompletableFuture<List<Status>> getTweets(String searchItem) throws TwitterException {
 
         Query query = new Query(searchItem);
+
+
         return CompletableFuture.supplyAsync(()-> {
-            Stream<Status> tweets = null;
+            List<Status> tweets = null;
             try{
-                tweets = twitter.search(query).getTweets().stream();
+                tweets = twitter.search(query).getTweets();
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
@@ -32,3 +37,15 @@ public class SetUpTwitterInstance {
         });
     }
 }
+  /*  AtomicReference<ResponseList<Status>> rs = null;
+       CompletableFuture.supplyAsync(()-> {
+           try {
+               rs.set(twitter.getHomeTimeline());
+               return rs;
+           } catch (TwitterException e) {
+               e.printStackTrace();
+           }
+
+           return rs;
+       });
+*/
