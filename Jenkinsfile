@@ -1,5 +1,8 @@
 pipeline {
-	agent any  
+	agent any
+	options {
+		retry(3)
+	}
 	stages {
 		stage('Compile - Stage 1') {
 			steps {
