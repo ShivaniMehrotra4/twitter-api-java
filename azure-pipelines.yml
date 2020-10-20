@@ -6,8 +6,6 @@
 trigger:
 - none
 
-pool:
-  vmImage: 'ubuntu-latest'
 
 extends:
   template: start.yaml
